@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_graph"
+    app:startDestination="@id/homeBlankFragment">
+
+    <fragment
+        android:id="@+id/homeBlankFragment"
+        android:name="com.kemalurekli.easypermissionsapp.HomeBlankFragment"
+        android:label="fragment_home_blank"
+        tools:layout="@layout/fragment_home_blank" >
+        <action
+            android:id="@+id/action_homeBlankFragment_to_yourLocationFragment"
+            app:destination="@id/yourLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yourLocationFragment"
+        android:name="com.kemalurekli.easypermissionsapp.YourLocationFragment"
+        android:label="fragment_your_location"
+        tools:layout="@layout/fragment_your_location" />
+</navigation>
