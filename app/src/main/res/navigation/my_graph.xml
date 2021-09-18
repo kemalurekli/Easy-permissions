@@ -11,12 +11,21 @@
         android:label="fragment_home_blank"
         tools:layout="@layout/fragment_home_blank" >
         <action
-            android:id="@+id/action_homeBlankFragment_to_yourLocationFragment"
-            app:destination="@id/yourLocationFragment" />
+            android:id="@+id/action_homeBlankFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/yourLocationFragment"
-        android:name="com.kemalurekli.easypermissionsapp.YourLocationFragment"
-        android:label="fragment_your_location"
-        tools:layout="@layout/fragment_your_location" />
+        android:id="@+id/mapsFragment"
+        android:name="com.kemalurekli.easypermissionsapp.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="userLong"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="userLat"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
