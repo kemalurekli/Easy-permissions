@@ -18,7 +18,6 @@ import com.kemalurekli.easypermissionsapp.databinding.FragmentHomeBlankBinding
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
 
-
 class HomeBlankFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private var _binding: FragmentHomeBlankBinding? = null
@@ -77,10 +76,10 @@ class HomeBlankFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         }
     }
     // if user granted permission.
+    //first permission granted.
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
         Toast.makeText(requireContext(), "Permission Granted!", Toast.LENGTH_SHORT).show()
         setViewVisibility()
-        println("ilk izin verildi.")
         getUserLocation()
     }
     private fun setViewVisibility() {
@@ -106,6 +105,7 @@ class HomeBlankFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         binding.btnGoToLocationFragment.visibility = View.GONE
         locationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
+                //This condition is for lag during getting user location.
                 if (location.provider.toString()=="gps"){
                     binding.btnGoToLocationFragment.visibility = View.VISIBLE
                     binding.tvGetyourlocation.visibility = View.GONE

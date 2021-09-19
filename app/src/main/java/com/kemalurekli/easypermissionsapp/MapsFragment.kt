@@ -16,20 +16,17 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlin.properties.Delegates
 
 class MapsFragment : Fragment() {
-
-
-
-
-    var lat : Double = 0.0
-    var lon : Double = 0.0
+    private  var lat : Double? = null
+    private  var lon : Double? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        lat=0.0
+        lon=0.0
         return inflater.inflate(R.layout.fragment_maps, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
@@ -37,15 +34,10 @@ class MapsFragment : Fragment() {
         arguments?.let {
             lat = MapsFragmentArgs.fromBundle(it).userLat.toDouble()
             lon = MapsFragmentArgs.fromBundle(it).userLong.toDouble()
-
         }
-
-
     }
-
     private val callback = OnMapReadyCallback { googleMap ->
-
-        var userLocation = LatLng(lat, lon)
+        var userLocation = LatLng(lat!!, lon!!)
         googleMap.addMarker(MarkerOptions().position(userLocation).title("Your Location"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation,15f))
     }
